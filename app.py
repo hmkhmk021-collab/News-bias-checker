@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 import streamlit as st
 from google import genai
@@ -13,6 +14,7 @@ try:
 except Exception:
     api_key = os.getenv("GEMINI_API_KEY")
     news_api_key = os.getenv("NEWS_API_KEY")
+
 client = genai.Client(api_key=api_key)
 
 
@@ -62,6 +64,7 @@ Ye batao:
 
 Jawab short aur clear format mein do.
 """
+    time.sleep(3)
     response = client.models.generate_content(
         model="gemini-3.6-flash",
         contents=prompt
@@ -90,6 +93,7 @@ Ab in sabka COMPARISON karo:
 
 Jawab clear headings ke sath do.
 """
+    time.sleep(3)
     response = client.models.generate_content(
         model="gemini-3.6-flash",
         contents=prompt
