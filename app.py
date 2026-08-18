@@ -6,8 +6,13 @@ from dotenv import load_dotenv
 
 # ===== Setup =====
 load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
-news_api_key = os.getenv("NEWS_API_KEY")
+
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+    news_api_key = st.secrets["NEWS_API_KEY"]
+except Exception:
+    api_key = os.getenv("GEMINI_API_KEY")
+    news_api_key = os.getenv("NEWS_API_KEY")
 client = genai.Client(api_key=api_key)
 
 
